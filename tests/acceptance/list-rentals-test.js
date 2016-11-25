@@ -1,16 +1,14 @@
 import { test } from 'qunit';
 import moduleForAcceptance from 'super-rentals/tests/helpers/module-for-acceptance';
 
-moduleForAcceptance('Acceptance | list rentals');
+moduleForAcceptance('Acceptance | list-rentals');
 
 
 test('should redirect to rentals route', function (assert) {
-	    assert.equal(currentURL(), '/rentals', 'should redirect automatically');
-});
-
-test('should list available rentals.', function (assert) {
-	    assert.equal(find('.listing').length, 3, 'should see 3 listings');
-
+  visit('/');
+  andThen(function() {
+    assert.equal(currentURL(), '/rentals', 'should redirect automatically');
+  });
 });
 
 test('should link to information about the company.', function (assert) {
@@ -20,6 +18,7 @@ test('should link to information about the company.', function (assert) {
     assert.equal(currentURL(), '/about', 'should navigate to about');
   });
 });
+
 
 test('should link to contact information.', function (assert) {
   visit('/');
